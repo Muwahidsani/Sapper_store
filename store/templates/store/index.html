@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAPPER – Phone Cases You'll Love</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+</head>
+<body>
+
+
+
+<header>
+  <div class="nav">
+    <a href="#" class="logo"><i></i>sapper</a>
+    <nav class="menu" id="menu" aria-label="Main">
+      <a href="#new">New Arrival</a>
+      <a href="#device">Shop By Device</a>
+      <a href="#track">Track Order</a>
+    </nav>
+    <div class="icons">
+      <button class="icon-btn" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <button class="icon-btn" aria-label="Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></button>
+      <button class="icon-btn" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.500-8 11-8 11z"/></svg><span class="badge" id="wishCount">0</span></button>
+      <button class="icon-btn" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.500 11h10L20 7H6.500"/><circle cx="9" cy="20" r="1.200"/><circle cx="17" cy="20" r="1.200"/></svg><span class="badge" id="cartCount">0</span></button>
+      <button class="icon-btn burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="hero-card">
+      <div>
+        <h1>Cases that make your phone stand out</h1>
+        <p>Bold prints, glass finishes and tough protection for every phone you can think of.</p>
+        <div class="cta"><a href="#new" class="btn">Shop new arrivals</a><a href="#device" class="btn alt">Find your phone</a></div>
+      </div>
+      <!-- Optional: put a transparent PNG at images/hero.png to replace the drawn phones -->
+      <div class="stage">
+        <div class="phone p1"></div><div class="phone p2"></div><div class="phone p3"></div>
+        <span class="sticker s1">Up to 60% off</span>
+        <span class="sticker s2">New drops weekly</span>
+        <img src="{% static 'store/images/hero.png' %}" alt="" onerror="this.remove()">
+      </div>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div><em>🚚</em><p><strong>Free shipping</strong><span>On prepaid orders</span></p></div>
+    <div><em>↩️</em><p><strong>Easy returns</strong><span>7-day replacement</span></p></div>
+    <div><em>🔒</em><p><strong>Secure payment</strong><span>UPI, cards, COD</span></p></div>
+    <div><em>🛡️</em><p><strong>Drop protection</strong><span>Raised edges and lip</span></p></div>
+  </div>
+
+  <section id="device">
+    <div class="wrap">
+      <div class="head"><div><h2>Shop by device</h2><p>Pick your phone and see cases that fit it exactly.</p></div></div>
+      <div class="cats">
+        <a class="cat c1" href="#"><h3>iPhone</h3><small>15, 14, 13 and more</small><div class="phone" style="--g:linear-gradient(160deg,#ffd84a,#ff9f43)"></div><img src="{% static 'store/images/cat-1.jpg' %}" alt="" onerror="this.remove()"></a>
+        <a class="cat c2" href="#"><h3>Samsung</h3><small>S24, A55, M-series</small><div class="phone" style="--g:linear-gradient(160deg,#15122e,#6a4cff)"></div><img src="{% static 'store/images/cat-2.jpg' %}" alt="" onerror="this.remove()"></a>
+        <a class="cat c3" href="#"><h3>OnePlus</h3><small>12, Nord and more</small><div class="phone" style="--g:linear-gradient(160deg,#ff5f7e,#ffd84a)"></div><img src="{% static 'store/images/cat-3.jpg' %}" alt="" onerror="this.remove()"></a>
+        <a class="cat c4" href="#"><h3>Redmi &amp; Realme</h3><small>Note 13, Realme 12</small><div class="phone" style="--g:linear-gradient(160deg,#3fe0b5,#2aa6ff)"></div><img src="{% static 'store/images/cat-4.jpg' %}" alt="" onerror="this.remove()"></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap cols">
+      <a class="col a" href="#"><h3>Glass cases with a glossy shine</h3><span class="btn">Shop glass</span><div class="phone" style="--g:linear-gradient(160deg,#ff5f7e,#6a4cff)"></div><img src="{% static 'store/images/col-1.jpg' %}" alt="" onerror="this.remove()"></a>
+      <a class="col b" href="#"><h3>Matte cases with a soft grip</h3><span class="btn">Shop matte</span><div class="phone"></div><img src="{% static 'store/images/col-2.jpg' %}" alt="" onerror="this.remove()"></a>
+    </div>
+  </section>
+
+  <section id="new">
+    <div class="wrap">
+      <div class="head"><div><h2>New arrivals</h2><p>Fresh designs added every week.</p></div><a href="#">View all</a></div>
+      <div class="grid" id="products">
+        {% for p in products %}
+        <article class="card">
+          <div class="thumb" style="--bg:{{ p.bg }}">
+            <div class="phone" style="--g:{{ p.g }}"></div>
+            <img src="{% static p.image %}" alt="{{ p.name }}" loading="lazy" onerror="this.remove()">
+            {% if p.tag %}<span class="tag {% if p.tag == 'Sale' %}sale{% endif %}">{{ p.tag }}</span>{% endif %}
+            <button class="wish" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.500-8 11-8 11z"/></svg></button>
+          </div>
+          <h3>{{ p.name }}</h3>
+          <span class="model">{{ p.model }}</span>
+          <div class="row">
+            <div class="price">₹{{ p.price }}<s>₹{{ p.old }}</s></div>
+            <button class="add">Add</button>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap bundle">
+      <h2>Buy 3+, get 20% off</h2>
+      <p>Mix any cases across any phones. The discount applies automatically at checkout.</p>
+      <a href="#new" class="btn">Build your bundle</a>
+    </div>
+  </section>
+
+  <section id="track">
+    <div class="wrap">
+      <div class="head"><div><h2>People love their Sappers</h2></div></div>
+      <div class="reviews">
+        <div class="rev"><div class="stars">★★★★★</div><p>Dropped my phone on the road twice. Not a scratch on the screen. The print still looks brand new.</p><div class="who"><i></i><div>Aarav M.<span>iPhone 15</span></div></div></div>
+        <div class="rev"><div class="stars">★★★★★</div><p>Fits perfectly and the buttons are easy to press. Delivery was quick and packaging was neat.</p><div class="who"><i></i><div>Nisha K.<span>Samsung S24</span></div></div></div>
+        <div class="rev"><div class="stars">★★★★★</div><p>Ordered three for the family and got the bundle discount straight away. Great value.</p><div class="who"><i></i><div>Rahul S.<span>OnePlus 12</span></div></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div><a href="#" class="logo"><i></i>sapper</a><p style="margin-top:12px;font-size:15px;max-width:300px">Phone cases that protect and look good doing it.</p></div>
+    <div><h4>Shop</h4><ul><li><a href="#new">New Arrival</a></li><li><a href="#device">Shop By Device</a></li><li><a href="#track">Track Order</a></li></ul></div>
+    <div><h4>Help</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div><h4>Get offers by email</h4>
+      <form class="news" id="newsForm"><input type="email" placeholder="Email address" aria-label="Email address" required><button class="btn" type="submit">Subscribe</button></form>
+    </div>
+  </div>
+  <div class="copy">© 2026 Sapper. All rights reserved.</div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="{% static 'store/js/main.js' %}"></script>
+</body>
+</html>
